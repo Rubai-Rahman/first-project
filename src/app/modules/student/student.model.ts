@@ -24,19 +24,26 @@ export const localGurdianSchema = new Schema<LocalGurdian>({
 
 export const studentSchema = new Schema<Student>({
   id: { type: String, required: true },
-  name: { type: nameSchema },
-  gender: ["male", "female"],
+  name: { type: nameSchema, required: true },
+  gender: {
+    type: String,
+    enum: ["male", "female"],
+    required: true,
+  },
   dateOfBirth: { type: String, required: true },
   email: { type: String, required: true },
   contactNo: { type: String, required: true },
   emergencyContactNo: { type: String, required: true },
-  bloodGroup: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+"],
+  bloodGroup: {
+    type: String,
+    enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+"],
+  },
   presentAddress: { type: String, required: true },
   permanentAddress: { type: String, required: true },
-  gurdian: { type: gurdianSchema },
-  localGurdian: { type: localGurdianSchema },
+  gurdian: { type: gurdianSchema, required: true },
+  localGurdian: { type: localGurdianSchema, required: true },
   profileImg: { type: String, required: true },
-  isActive: { type: Boolean, required: true },
+  isActive: { type: Boolean, required: true, default: true },
 });
 
 //model making

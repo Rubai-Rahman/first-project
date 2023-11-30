@@ -24,18 +24,25 @@ exports.localGurdianSchema = new mongoose_1.Schema({
 exports.studentSchema = new mongoose_1.Schema({
     id: { type: String, required: true },
     name: { type: exports.nameSchema },
-    gender: ["male", "female"],
+    gender: {
+        type: String,
+        enum: ["male", "female"],
+        required: true,
+    },
     dateOfBirth: { type: String, required: true },
     email: { type: String, required: true },
     contactNo: { type: String, required: true },
     emergencyContactNo: { type: String, required: true },
-    bloodGroup: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+"],
+    bloodGroup: {
+        type: String,
+        enum: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+"],
+    },
     presentAddress: { type: String, required: true },
     permanentAddress: { type: String, required: true },
     gurdian: { type: exports.gurdianSchema },
     localGurdian: { type: exports.localGurdianSchema },
     profileImg: { type: String, required: true },
-    isActive: { type: Boolean, required: true },
+    isActive: { type: Boolean, required: true, default: true },
 });
 //model making
 exports.StudentModel = (0, mongoose_1.model)("Student", exports.studentSchema);
