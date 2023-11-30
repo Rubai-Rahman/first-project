@@ -42,7 +42,22 @@ const getAllStudents = (req, res) => __awaiter(void 0, void 0, void 0, function*
         console.log(err);
     }
 });
+const getSingleStudent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const studentId = req.params.studentId;
+        const result = yield student_service_1.StudentServices.getSingleStudentsFromDB(studentId);
+        res.status(200).json({
+            success: true,
+            message: "Studnet is retrive successfully",
+            data: result,
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.StudentControllers = {
     createStudent,
     getAllStudents,
+    getSingleStudent,
 };
