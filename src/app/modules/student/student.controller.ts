@@ -11,11 +11,15 @@ const createStudent = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "Studnet is created successfully",
+      message: "Student is created successfully",
       data: result,
     });
   } catch (err) {
-    console.log(err);
+    res.status(500).json({
+      success: true,
+      message: "Somthing went wrong",
+      error: err,
+    });
   }
 };
 
@@ -29,7 +33,11 @@ const getAllStudents = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.log(err);
+    res.status(500).json({
+      success: true,
+      message: "somthing went wrong",
+      error: err,
+    });
   }
 };
 const getSingleStudent = async (req: Request, res: Response) => {
@@ -42,7 +50,11 @@ const getSingleStudent = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.log(err);
+    res.status(500).json({
+      success: true,
+      message: "Something went wrong",
+      error: err,
+    }); 
   }
 };
 
