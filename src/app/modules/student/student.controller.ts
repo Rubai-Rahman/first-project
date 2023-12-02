@@ -54,7 +54,7 @@ const getSingleStudent = async (req: Request, res: Response) => {
       success: true,
       message: "Something went wrong",
       error: err,
-    }); 
+    });
   }
 };
 
